@@ -75,21 +75,20 @@ class simu:	#o programa em si
                                 if(i.d>1):
                                         i.d-=1
 	def listamedia(self):	#informa quantas pessoas estao doentes
-		x=len(self.populacaoc)
-		print("{} pessoas doentes de {}".format(x,len(self.populacao)))
+		print("{} pessoas doentes de {}".format(len(self.populacaoc),len(self.populacao)))
       
 	def getvar(self):	#para rever os valores das variaves
 		print("tempo:{}\npessoas:{}\nnivel de perigo:{}\ninfectados:{}".format(self.tempolimite,len(self.populacao),self.npd,len(self.populacaoc)))
                                         
 	def start(self):	#inicia a simulacao em si
-		self.window.fill(BLACK)
+		self.window.fill(BLACK)	#desenha o mapa
 		for d in range(0,self.tempolimite):
-			self.window.fill(BLACK)
+			self.window.fill(BLACK)	#limpa o mapa
 			for i in self.populacao:
 				self.pessoamov(i)
 			self.pessoacontamina()
 			
-			for p in test.populacao:
+			for p in test.populacao:	#define cor para rastrear os doentes
 				if(p.d==0):
 					cor=GREEN
 				if(p.d>0 and p.d<5):
@@ -97,7 +96,7 @@ class simu:	#o programa em si
 				if(p.d>=5):
 					cor=RED
 				posisao=(p.x,p.y)
-				pygame.draw.circle(self.window, cor, posisao, self.npc, 0)
+				pygame.draw.circle(self.window, cor, posisao, self.npc, 0)	
 			pygame.display.update()
 			
 			print("dia:{} ".format(d+1))
@@ -110,12 +109,6 @@ class simu:	#o programa em si
 #test=simu(1000,5,1000,mapa=400)
 test=simu(50,5,1000,mapa=200)
 test.start()
-while True:
-	print('dentro do while')
-	for event in pygame.event.get():
-		event
-		pygame.quit()
-		sys.exit()
-
+input()
             
             
